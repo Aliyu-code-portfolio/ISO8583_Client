@@ -56,7 +56,7 @@ internal sealed class FinancialServices : IFinancialServices
         {
             return true;
         }
-
+        
         return false;
     }
     private string GenerateIsoMessage<T>(byte n_DataElement, MessageType mTI, T payLoad)
@@ -156,7 +156,7 @@ internal sealed class FinancialServices : IFinancialServices
             try
             {
                 // Connect to Remote EndPoint
-                await sender.ConnectAsync(remoteEP);
+                 sender.Connect(remoteEP);
 
                 Console.WriteLine("Socket connected to {0}",
                     sender.RemoteEndPoint.ToString());
@@ -170,7 +170,7 @@ internal sealed class FinancialServices : IFinancialServices
                 response = Encoding.ASCII.GetString(bytes, 0, bytesRecieved);
 
                 Console.WriteLine("Echoed test = {0}", response);
-
+                Console.ReadKey();
                 // Release the socket.
                 sender.Shutdown(SocketShutdown.Both);
                 sender.Close();
